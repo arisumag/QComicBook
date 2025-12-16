@@ -1,8 +1,9 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
+#set(CMAKE_CXX_COMPILER "/usr/bin/clang++")
 
 PROJECT(QComicBook)
 SET(VERSION "0.9.1")
-SET(PACKAGE qcomicbook) 
+SET(PACKAGE qcomicbook)
 CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/src/config.h.cmake ${CMAKE_BINARY_DIR}/config.h)
 
 IF(NOT CMAKE_BUILD_TYPE)
@@ -15,6 +16,7 @@ IF(CMAKE_BUILD_TYPE STREQUAL "Release")
     ADD_DEFINITIONS( -DQT_NO_DEBUG_OUTPUT )
 ENDIF()
 
+#add_compile_options(-Wall -Wextra -pedantic)
 #set(CMAKE_AUTOMOC ON)
 
 SET(QT_MIN_VERSION "5.4.0")
@@ -31,6 +33,8 @@ include_directories(${Qt5PrintSupport_INCLUDE_DIRS})
 include_directories(${Qt5X11Extras_INCLUDE_DIRS})
 add_definitions(${Qt5Widgets_DEFINITIONS})
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${Qt5Widgets_EXECUTABLE_COMPILE_FLAGS}")
+
+INCLUDE(GNUInstallDirs)
 
 INCLUDE(FindPkgConfig)
 PKG_CHECK_MODULES(POPPLER poppler-qt5>=0.12.4 REQUIRED)

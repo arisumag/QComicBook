@@ -10,32 +10,31 @@
  * WITHOUT ANY WARRANTY. See GPL for more details.
  */
 
-#include "TargzArchiverStrategy.h"
+#include "TarArchiverStrategy.h"
 #include "Utility.h"
 
 using namespace QComicBook;
 using Utility::which;
 
-TargzArchiverStrategy::TargzArchiverStrategy()
-    : ArchiverStrategy("tar.gz", FileSignature())
+TarArchiverStrategy::TarArchiverStrategy()
+    : ArchiverStrategy("cbt", FileSignature())
 {
 }
 
-TargzArchiverStrategy::~TargzArchiverStrategy()
+TarArchiverStrategy::~TarArchiverStrategy()
 {
 }
 
-void TargzArchiverStrategy::configure()
+void TarArchiverStrategy::configure()
 {
-    addExtension(".tar.gz");
-    addExtension(".tgz");
-    addExtension(".cbg");
+    addExtension(".tar");
+    addExtension(".cbt");
     setExecutables("tar");
 
     if (which("tar") != QString())
     {
-        setExtractArguments("tar -xvzf @F");
-        setListArguments("tar -tzf @F");
+        setExtractArguments("tar -xvf @F");
+        setListArguments("tar -tf @F");
         setSupported();
     }
 }

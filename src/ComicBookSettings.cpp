@@ -69,14 +69,14 @@ const EnumMap<Size> ComicBookSettings::size2string[] = {
 	{"fitheight", FitHeight},
 	{"wholepage", WholePage},
 	{"bestfit",   BestFit},
-	{QString::null}
+	{QString()}
 };
 
 const EnumMap<ViewType> ComicBookSettings::viewtype2string[] = {
 	{"simple",  Simple},
 	{"continuous", Continuous},
 	{"frame", Frame},
-	{QString::null}
+	{QString()}
 };
 
 ComicBookSettings& ComicBookSettings::instance()
@@ -86,8 +86,8 @@ ComicBookSettings& ComicBookSettings::instance()
 }
 
 ComicBookSettings::ComicBookSettings(): QObject()
-                                      , m_bkpath(QString::null)
-                                      , m_thpath(QString::null)
+                                      , m_bkpath(QString())
+                                      , m_thpath(QString())
                                       , m_dirsok(false)
 {
 	m_cfg = new QSettings();
@@ -103,7 +103,7 @@ ComicBookSettings::~ComicBookSettings()
 
 bool ComicBookSettings::checkDirs()
 {
-	m_dirsok = false; 
+	m_dirsok = false;
 	m_bkpath = QStandardPaths::writableLocation(QStandardPaths::DataLocation);
 
 	QDir dir(m_bkpath);
@@ -165,7 +165,7 @@ void ComicBookSettings::load()
 	m_cfg->endGroup();
 	m_cfg->beginGroup(GRP_RUNTIME);
 		m_lastdir = m_cfg->value(OPT_LASTDIR, QString()).toString();
-		m_recent = m_cfg->value(OPT_RECENT).toStringList(); 
+		m_recent = m_cfg->value(OPT_RECENT).toStringList();
         m_cfg->endGroup();
 	m_cfg->beginGroup(GRP_MISC);
 		m_donationdlg = m_cfg->value(OPT_DONATION, true).toBool();
@@ -563,7 +563,7 @@ void ComicBookSettings::tmpDir(const QString &dir)
         m_cfg->setValue(GRP_MISC OPT_TMPDIR, m_tmpdir = dir);
     }
 }
-			
+
 void ComicBookSettings::showDonationDialog(bool f)
 {
 	if (f != m_donationdlg)

@@ -16,28 +16,28 @@ SET(qcomicbook_moc_hdrs
 	FrameDetect/FrameCache.h
 	FrameDetect/FrameDetectThread.h
 	Archivers/ArchiversConfiguration.h
-	BookmarkManager.h 
-	ComicBookCfgDialog.h 
+	BookmarkManager.h
+	ComicBookCfgDialog.h
 	ComicBookInfo.h
-	ComicBookSettings.h 
-	ComicMainWindow.h 
+	ComicBookSettings.h
+	ComicMainWindow.h
 	View/FrameView.h
-	View/PageViewBase.h 
+	View/PageViewBase.h
 	View/ContinuousPageView.h
 	View/SimplePageView.h
 	Sink/ImgSink.h
-        Sink/ImgDirSink.h 
+        Sink/ImgDirSink.h
 	Sink/ImgArchiveSink.h
-	LoaderThreadBase.h 
+	LoaderThreadBase.h
 	PageLoaderThread.h
 	ThumbnailLoaderThread.h
-	GoToPageWidget.h 
+	GoToPageWidget.h
         PrinterThread.h
         PrintProgressDialog.h
         RecentFilesMenu.h
-	StatusBar.h 
+	StatusBar.h
         SystemInfoDialog.h
-	ThumbnailsWindow.h 
+	ThumbnailsWindow.h
 	ThumbnailsView.h
 	ViewProperties.h
         Job/ImageTransformThread.h
@@ -59,5 +59,5 @@ ADD_DEPENDENCIES(qcomicbook translations)
 TARGET_LINK_LIBRARIES(qcomicbook Qt5::Widgets Qt5::PrintSupport Qt5::X11Extras)
 TARGET_LINK_LIBRARIES(qcomicbook ${POPPLER_LIBRARIES})
 
-INSTALL(TARGETS qcomicbook DESTINATION bin)
+INSTALL(TARGETS qcomicbook DESTINATION ${CMAKE_INSTALL_BINDIR})
 

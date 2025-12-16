@@ -36,7 +36,7 @@ QString Utility::which(const QString &command)
 		if (finfo.isExecutable())
 			return finfo.absoluteFilePath();
 	}
-	return QString::null;
+	return QString();
 }
 
 void Utility::touch(const QString &fname)
@@ -60,7 +60,7 @@ QString Utility::shortenPath(const QString &path, const QString &filler, int max
                 for (; i<p.length() && p[i]!='/'; i++);
                 shortPath.append(p.right(p.length() - i ));
             }
-            shortPath.append("/");            
+            shortPath.append("/");
             shortPath.append(finf.fileName());
             return shortPath;
         }

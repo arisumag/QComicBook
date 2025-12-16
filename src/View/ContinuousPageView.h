@@ -57,23 +57,23 @@ namespace QComicBook
         virtual void gotoPage(int n);
         virtual void scrollToTop();
         virtual void scrollToBottom();
-        
+
     public:
         ContinuousPageView(QWidget *parent, int physicalPages, const ViewProperties& props);
         virtual ~ContinuousPageView();
-            
+
         virtual int visiblePages() const;
         virtual int viewWidth() const;
         virtual void setNumOfPages(int n);
         virtual int currentPage() const;
-        
+
     private:
         QVector<ComicPageImage*> imgLabel;
         CoordinateRangeList<int> m_ypos;
-        int m_requestedPage; //page requested by call to gotoPage
         int m_firstVisible; //first visible page in the view
         double m_firstVisibleOffset; //visible portion (%) of first visible page
-        
+        int m_requestedPage; //page requested by call to gotoPage
+
         friend class ContinuousPageViewDebug;
     };
 }
